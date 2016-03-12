@@ -138,10 +138,10 @@ text1.x = 35;
 text1.y = 300;
 
 var text2 = new TextField();
-text2.size = '28px Arial'
+text2.size = '20px Arial'
 text2.color = '#FFFFFF'
-text2.word = '君は　私のMasterか'
-text2.x = 180;
+text2.word = 'Sevant Saber 召唤に従い 参上した 问う 贵方が私のマスタ-か'
+text2.x = 150;
 text2.y = 280;
 
 var bitmap = new Bitmap();
