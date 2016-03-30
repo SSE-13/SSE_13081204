@@ -243,7 +243,20 @@ module render {
             }
             this.c = -v * scaleY;
             this.d = u * scaleY;
+            
+            
 
         }
+        MatrixAB(m1:Matrix,m2:Matrix):Matrix{
+            var m = new Matrix();
+            m.a=m1.a*m2.a+m1.b*m2.c;
+            m.b=m1.a*m2.b+m1.b*m2.d;
+            m.c = m2.a*m1.c + m2.c*m1.d;
+            m.d = m2.b*m1.c + m1.d*m2.d;
+            m.tx = m2.a*m1.tx + m2.c*m1.ty + m2.tx;
+            m.ty = m2.b*m1.tx + m2.d*m1.ty + m2.ty; 
+            return m;
+        }
+        
     }
 }

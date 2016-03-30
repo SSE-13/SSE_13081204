@@ -42,9 +42,9 @@ var HumanBody = (function (_super) {
         _super.apply(this, arguments);
     }
     HumanBody.prototype.onTicker = function (duringTime) {
-        this.x = this.vx * duringTime;
-        this.y = this.vy * duringTime;
-        this.rotation = Math.PI * duringTime;
+        this.x += this.vx * duringTime;
+        this.y += this.vy * duringTime;
+        this.rotation += Math.PI * duringTime;
     };
     return HumanBody;
 }(Body));

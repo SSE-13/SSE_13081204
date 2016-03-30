@@ -31,6 +31,8 @@ module render {
 
             var parent = this.parent;
             var angle = this.rotation / 180 * Math.PI;
+            //var x=this.x;
+            //var y=this.y;
             var skewX = angle;
             var skewY = angle;
 
@@ -43,8 +45,8 @@ module render {
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
-                
-                this.globalMatrix = localMatrix;
+              
+                this.globalMatrix =localMatrix.MatrixAB(localMatrix,parent.globalMatrix);
             }
 
 

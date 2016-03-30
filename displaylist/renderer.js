@@ -22,6 +22,8 @@ var render;
         DisplayObject.prototype.draw = function (context) {
             var parent = this.parent;
             var angle = this.rotation / 180 * Math.PI;
+            //var x=this.x;
+            //var y=this.y;
             var skewX = angle;
             var skewY = angle;
             var localMatrix = new render.Matrix();
@@ -32,7 +34,8 @@ var render;
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
-                this.globalMatrix = localMatrix;
+                //localMatrix=localMatrix.MatrixAB(new Matrix(1,0,0,1,-20,-80));//设定轴心点的位置
+                this.globalMatrix = localMatrix.MatrixAB(localMatrix, parent.globalMatrix);
             }
             context.setTransform(this.globalMatrix.a, this.globalMatrix.b, this.globalMatrix.c, this.globalMatrix.d, this.globalMatrix.tx, this.globalMatrix.ty);
             this.render(context);
