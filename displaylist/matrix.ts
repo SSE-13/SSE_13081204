@@ -247,14 +247,14 @@ module render {
             
 
         }
-        MatrixAB(m1:Matrix,m2:Matrix):Matrix{
+        MatrixAB(A:Matrix,B:Matrix):Matrix{
             var m = new Matrix();
-            m.a=m1.a*m2.a+m1.b*m2.c;
-            m.b=m1.a*m2.b+m1.b*m2.d;
-            m.c = m2.a*m1.c + m2.c*m1.d;
-            m.d = m2.b*m1.c + m1.d*m2.d;
-            m.tx = m2.a*m1.tx + m2.c*m1.ty + m2.tx;
-            m.ty = m2.b*m1.tx + m2.d*m1.ty + m2.ty; 
+            m.a=A.a*B.a+A.b*B.c;
+            m.b=A.a*B.b+A.b*B.d;
+            m.c = B.a*A.c + B.c*A.d;
+            m.d = B.b*A.c + A.d*B.d;
+            m.tx = B.a*A.tx + B.c*A.ty + B.tx;
+            m.ty = B.b*A.tx + B.d*A.ty + B.ty; 
             return m;
         }
         

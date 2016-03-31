@@ -34,7 +34,7 @@ var render;
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
-                //localMatrix=localMatrix.MatrixAB(new Matrix(1,0,0,1,-20,-80));//设定轴心点的位置
+                localMatrix = localMatrix.MatrixAB(localMatrix, new render.Matrix(1, 0, 0, 1, 20, 70));
                 this.globalMatrix = localMatrix.MatrixAB(localMatrix, parent.globalMatrix);
             }
             context.setTransform(this.globalMatrix.a, this.globalMatrix.b, this.globalMatrix.c, this.globalMatrix.d, this.globalMatrix.tx, this.globalMatrix.ty);

@@ -45,7 +45,8 @@ module render {
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
-              
+               
+             // localMatrix=localMatrix.MatrixAB(localMatrix,new Matrix(1,0,0,1,20,70));
                 this.globalMatrix =localMatrix.MatrixAB(localMatrix,parent.globalMatrix);
             }
 
