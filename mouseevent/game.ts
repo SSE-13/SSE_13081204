@@ -46,22 +46,22 @@ renderCore.start(humanContainer, ["body.jpg","head.jpg","right_harm.jpg","left_h
 class HumanBody extends Body {
     
     
-    vx1:number = 5;
+    vx1:number = 1;
     vx2:number = this.vx1;
     
-    vy1:number = 5;
+    vy1:number = 1;
     vy2:number = this.vy1;
     
     stay:boolean = false;
     
-    rotate1:number = 1;
+    rotate1:number = 0.5;
     rotate2:number = this.rotate1;
     
     
     onTicker(duringTime: number) {
         this.x += this.vx1*duringTime;
         this.y += this.vy1*duringTime;
-        this.rotation +=Math.PI*duringTime;
+        this.rotation +=this.rotate1;
 
     }
 }
@@ -84,7 +84,7 @@ var headHitTest = (localPoint:math.Point,displayObject:render.DisplayObject) =>{
 var headOnClick = () => {
     //alert("clicked!!");
     //修改 HumanBody 的速度，使其反向移动
-    if(!body.stay){
+    if(body.stay==false){
     body.rotate1=-body.rotate2;
 }
     else{
@@ -96,21 +96,37 @@ var headOnClick = () => {
     }
 }
 
-var legHitTest=(localPoint:math.Point,displayObject:render.DisplayObject) =>{
-    if (localPoint.x>0&&localPoint.x<15&&localPoint.y>0&&localPoint.y<70){
+var leftlegHitTest=(localPoint:math.Point,displayObject:render.DisplayObject) =>{
+    //alert (`点击位置为${localPoint.x},${localPoint.y}`);
+    if (localPoint.x>0&&localPoint.x<17&&localPoint.y>0&&localPoint.y<71){
         return true;
     }
 }
 
-var legOnClick = () =>{
+var rightlegHitTest=(localPoint:math.Point,displayObject:render.DisplayObject) =>{
+   //alert (`点击位置为${localPoint.x},${localPoint.y}`);
+    if (localPoint.x>-1&&localPoint.x<11&&localPoint.y>-1&&localPoint.y<71){
+        return true;
+    }
+}
+
+var leftlegOnClick = () =>{
     body.rotate1=0;
     body.vx1=0;
     body.vy1=0;
     body.stay=true;
 }
+
+var rightlegOnClick = () =>{
+    body.rotate1=0;
+    body.vx1=0;
+    body.vy1=0;
+    body.stay=true;
+}
+
 eventCore.register(head,headHitTest,headOnClick);
-eventCore.register(leftleg,legHitTest,legOnClick);
-eventCore.register(rightleg,legHitTest,legOnClick);
+eventCore.register(leftleg,leftlegHitTest,leftlegOnClick);
+eventCore.register(rightleg,rightlegHitTest,rightlegOnClick);
 
 
 
