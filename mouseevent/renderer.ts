@@ -37,7 +37,7 @@ module render {
         }
 
         draw(context: CanvasRenderingContext2D) {
-
+             //var Matrixh= new Matrixh(1,0,0,1,50,70);
             var parent = this.parent;
             var localMatrix = this.getLocalMatrix();
             if (!parent) {
@@ -46,6 +46,8 @@ module render {
             else {
                 //TODO:
                 // GLOBAL_MATRIX = PARENT_GLOBAL_MATRIX * LOCAL_MATRIX
+                
+                //localMatrix = math.matrixAppendMatrix(localMatrix,Matrixh);
                 this.globalMatrix = math.matrixAppendMatrix(localMatrix, parent.globalMatrix);
             }
 
@@ -97,6 +99,7 @@ module render {
 
 
         source;
+        
 
         render(context: CanvasRenderingContext2D) {
 
